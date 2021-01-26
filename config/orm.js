@@ -1,15 +1,22 @@
-const connection = require('./conncetion.js');
+const connection = require('./connection.js');
 
 let orm = {
-    selectAll: (database) => {
-        connection.query("SELECT * FROM ? ;" , database, (err, result) => {
+    selectAll: (dbTable) => {
+        let queryString = "SELECT * FROM " + dbTable + ";";
+        connection.query(queryString, (err, result) => {
             if(err) throw err;
-            console.log(result);
+            console.table(result);
             return result;
         });
     },
 
-    insertOne: () => {
+    insertOne: (burgerName, isDevoured, dbTable) => {
+        let queryString = "INSERT INTO " + dbTable + '(burger_name, devoured) VALUES ("' + burgerName + '", ' + isDevoured + ");";
+        connection.query(queryString, (err, res) => {
+            if(err) throw err;
+            return res;
+        });
+
     },
 
     updateOne: () => {
