@@ -1,15 +1,23 @@
-const {selectAll , insertOne, updateOne} = require('../config/orm.js');
+const { selectAll, insertOne, updateOne } = require('../config/orm.js');
 
 let burgers = {
-   selectAll: () => {
-       selectAll('burgers');
-   },
-   insertOne: (burgerName, isDevoured) => {
-       insertOne('burgers' , burgerName, isDevoured);
-   },
-   updateOne: (burgerName, isDevoured) => {
-       updateOne('burgers', burgerName, isDevoured);
-   }
+    selectAll: (cb) => {
+        selectAll('burgers', (res) => {
+            cb(res);
+        });
+
+    },
+    insertOne: (burgerName, isDevoured, cb) => {
+        insertOne('burgers', burgerName, isDevoured, (res) => {
+            cb(res);
+        });
+
+    },
+    updateOne: (burgerName, isDevoured, cb) => {
+        updateOne('burgers', burgerName, isDevoured, (res) => {
+            cb(res);
+        });
+    }
 }
 
 module.exports = burgers;
