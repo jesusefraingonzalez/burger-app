@@ -5,7 +5,6 @@ let orm = {
         let queryString = "SELECT * FROM ??;";
         connection.query(queryString, dbTable, (err, res) => {
             if (err) throw err;
-            console.table(res);
             cb(res);
         });
     },
