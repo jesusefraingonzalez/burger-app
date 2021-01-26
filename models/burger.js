@@ -1,19 +1,19 @@
 const { selectAll, insertOne, updateOne } = require('../config/orm.js');
 
 let burgers = {
-    selectAll: (cb) => {
+    all: (cb) => {
         selectAll('burgers', (res) => {
             cb(res);
         });
 
     },
-    insertOne: (burgerName, isDevoured, cb) => {
+    create: (burgerName, isDevoured, cb) => {
         insertOne('burgers', burgerName, isDevoured, (res) => {
             cb(res);
         });
 
     },
-    updateOne: (burgerName, isDevoured, cb) => {
+    update: (burgerName, isDevoured, cb) => {
         updateOne('burgers', burgerName, isDevoured, (res) => {
             cb(res);
         });
