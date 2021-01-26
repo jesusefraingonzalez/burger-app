@@ -7,7 +7,7 @@ let burgers = {
    insertOne: (burgerName, isDevoured) => {
        insertOne('burgers' , burgerName, isDevoured);
    },
-   updateOne: (burgerName, isDevoureds) => {
+   updateOne: (burgerName, isDevoured) => {
        updateOne('burgers', burgerName, isDevoured);
    }
 }
