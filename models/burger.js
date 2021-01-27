@@ -7,8 +7,8 @@ let burgers = {
         });
 
     },
-    create: (burgerName, isDevoured, cb) => {
-        insertOne('burgers', burgerName, isDevoured, (res) => {
+    create: (burgerName, cb) => {
+        insertOne('burgers', ["burger_name", "devoured"] ,[burgerName, false], (res) => {
             cb(res);
         });
 
