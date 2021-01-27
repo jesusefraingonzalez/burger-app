@@ -1,0 +1,50 @@
+h1 {
+    color: black;
+    text-align: center;
+}
+
+body {
+    background-color: white;
+}
+
+ul{
+    min-width: 175px;
+    border-radius: 10px;
+}
+
+li {
+    list-style-type: none;
+    padding: 4px;
+    overflow: auto;
+}
+
+li p {
+    margin: 3px;
+}
+
+#main-container {
+    margin: auto;
+    max-width: 700px;
+    background-color: wheat;
+    padding: 20px;
+    overflow: auto;
+}
+
+#input-container {
+    max-width: 400px;
+    margin: auto;
+    text-align: center;
+}
+
+.container {
+    max-width: 200px;
+    margin: auto;
+    float: left;
+    text-align: center;
+    outline-style: solid;
+    outline:springgreen;
+}
+
+.devour-button {
+    float: right;
+}
