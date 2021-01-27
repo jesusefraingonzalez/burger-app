@@ -4,10 +4,7 @@ const devourButton = document.querySelectorAll('.devour-button');
 
 burgerButton.addEventListener('click', (event) => {
 
-    let newBurger = {
-        burger_name: burgerInput.value,
-        devoured: false
-    };
+    let newBurger = {burger_name: burgerInput.value};
 
     console.log(newBurger);
     fetch('api/burgers/', {
@@ -22,13 +19,16 @@ burgerButton.addEventListener('click', (event) => {
 
 devourButton.forEach(button => {
     button.addEventListener('click', (event) => {
-        console.log('clicked devour button');
-
-        fetch('api/burgers', {
+           
+        let route = `api/burgers/${button.dataset.id}`;
+        console.log(route)
+        fetch(route, {
             method: "PUT",
-            Headers: { "Content-Type": "application/json" }
-        })
-
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({devoured: true})
+        }).then((res) => {
+            console.log(res);
+        });
     });
 });
 
