@@ -62,14 +62,24 @@ let orm = {
         });
     },
 
-    updateOne: (dbTable, burgerName, isDevoured, cb) => {
-        let queryString = "UPDATE ?? SET devoured = ? WHERE burger_name = ?";
-        connection.query(queryString, [dbTable, isDevoured, burgerName], (err, res) => {
-            console.log(queryString)
-            if (err) throw err;
-            cb(res);
+    updateOne: (table, objColVals, condition, cb) => {
+        var queryString = "UPDATE " + table;
+
+        queryString += " SET ";
+        queryString += objToSql(objColVals);
+        queryString += " WHERE ";
+        queryString += condition;
+
+        console.log(queryString);
+        connection.query(queryString, (err, result) => {
+            if (err) {
+                throw err;
+            }
+
+            cb(result);
         });
     }
 }
+
 
 module.exports = orm;
