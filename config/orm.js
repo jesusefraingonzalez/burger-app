@@ -9,18 +9,20 @@ let orm = {
         });
     },
 
-    insertOne: (dbTable, burgerName, isDevoured, cb) => {
-        let queryString = 'INSERT INTO ?? (burger_name, devoured) VALUES (?, ?)';
-        connection.query(queryString, [dbTable, burgerName, isDevoured], (err, res) => {
+    insertOne: (dbTable, columns, values, cb) => {
+        let queryString = 'INSERT INTO ' + dbTable + '(??) VALUES (??);';
+        console.log(queryString);
+        connection.query(queryString, columns, values, (err, res) => {
+            console.table(res);
             if (err) throw err;
             cb(res);
         });
-
     },
 
     updateOne: (dbTable, burgerName, isDevoured, cb) => {
         let queryString = "UPDATE ?? SET devoured = ? WHERE burger_name = ?";
         connection.query(queryString, [dbTable, isDevoured, burgerName], (err, res) => {
+            console.log(queryString)
             if (err) throw err;
             cb(res);
         });
