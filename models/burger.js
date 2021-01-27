@@ -13,8 +13,8 @@ let burgers = {
         });
 
     },
-    update: (burgerName, isDevoured, cb) => {
-        updateOne('burgers', burgerName, isDevoured, (res) => {
+    update: (obj, condition, cb) => {
+        updateOne('burgers', obj, condition, (res) => {
             cb(res);
         });
     }
