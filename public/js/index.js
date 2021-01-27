@@ -13,19 +13,18 @@ burgerButton.addEventListener('click', (event) => {
         body: JSON.stringify(newBurger),
     }).then(response => {
         response = response.json();
-        console.log(response)
+        console.log(response);
     })
 });
 
 devourButton.forEach(button => {
     button.addEventListener('click', (event) => {
-           
         let route = `api/burgers/${button.dataset.id}`;
         console.log(route)
         fetch(route, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({devoured: true})
+            body: JSON.stringify({devoured: true}) 
         }).then((res) => {
             console.log(res);
         });
