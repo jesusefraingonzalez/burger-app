@@ -4,27 +4,29 @@
 <input type="text" id="burger-input">
 <button type="submit" id="burger-button">Add Burger!</button>
 
-<h2>Burgers that are not devoured</h2>
+<div class="container">
+    <h2>Burgers that are not devoured</h2>
+    <ul>
+        {{#each burgers}}
+        {{#unless devoured}}
+        <li data-devoured="{{devoured}}" data-id="{{id}}">
+            <span>{{burger_name}}</span>
+            <button type="submit" class="devour-button" data-id={{id}}>Devour!</button>
+        </li>
+        {{/unless}}
+        {{/each}}
+    </ul>
+</div>
 
-<ul>
-    {{#each burgers}}
-    {{#unless devoured}}
-    <li data-devour="false">
-        <span>{{burger_name}}</span>
-        <button type="submit" class="devour-button">Devour!</button>
-    </li>
-    {{/unless}}
-    {{/each}}
-</ul>
-
-<h2>Burgers that are devoured</h2>
-
-<ul>
-    {{#each burgers}}
-    {{#if devoured}}
-    <li data-devour="true">
-        <p> {{burger_name}} </p>
-    </li>
-    {{/if}}
-    {{/each}}
-</ul>
+<div class="devoured container">
+    <h2>Burgers that are devoured</h2>
+    <ul>
+        {{#each burgers}}
+        {{#if devoured}}
+        <li data-devoured="{{devoured}}" data-id="{{id}}">
+            <span>{{burger_name}}</span>
+        </li>
+        {{/if}}
+        {{/each}}
+    </ul>
+</div>
