@@ -10,10 +10,9 @@ let orm = {
     },
 
     insertOne: (dbTable, columns, values, cb) => {
-        let queryString = 'INSERT INTO ' + dbTable + '(??) VALUES (??);';
+        let queryString = "INSERT INTO " + dbTable + "(??) VALUES (??);";
         console.log(queryString);
-        connection.query(queryString, columns, values, (err, res) => {
-            console.table(res);
+        connection.query(queryString, [columns, values] , (err, res) => {
             if (err) throw err;
             cb(res);
         });
