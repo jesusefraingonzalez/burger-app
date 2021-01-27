@@ -9,7 +9,10 @@
 <ul>
     {{#each burgers}}
     {{#unless devoured}}
-    <li>{{burger_name}}</li>
+    <li data-devour="false">
+        <span>{{burger_name}}</span>
+        <button type="submit" class="devour-button">Devour!</button>
+    </li>
     {{/unless}}
     {{/each}}
 </ul>
@@ -19,38 +22,9 @@
 <ul>
     {{#each burgers}}
     {{#if devoured}}
-    <li>
+    <li data-devour="true">
         <p> {{burger_name}} </p>
-        <button type="submit" class="devour-button">Devour!</button>
     </li>
     {{/if}}
     {{/each}}
 </ul>
-
-<script>
-    const burgerButton = document.querySelector('#burger-button');
-    const burgerInput = document.querySelector('#burger-input');
-    const devourButton = document.querySelectorAll('.devour-button');
-
-    burgerButton.addEventListener('click', (event) => {
-       
-        let newBurger = {
-            burger_name: burgerInput.value,
-            devoured: false
-        };
-
-        console.log(newBurger);
-        fetch('api/burgers/', {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(newBurger),
-        }).then(response => {
-            response = response.json();
-            console.log(response)
-        })
-    });
-
-    devourButton.addEventListener('click', (event) => {
-
-    });
-</script>
